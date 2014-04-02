@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta HTTP-EQUIV="Content-Type" content="text/html/; charset=UTF-8" />
+		<meta HTTP-EQUIV="Content-Script-Type" content="text/javascript" />
+		<meta name="viewport" content="initial-scale=1., user-scalable=no" />
+		<title>GoogleMap 経路案内テスト</title>
+		
+		<style type="text/css">
+			html { height : 100%; }
+			body { height : 100%; margin : 0; padding : 0; }
+			#map-canvas { height : 100%; }
+		</style>
+		
+		<!-- APIを指定 -->
+		<!-- 2014/04/03 sensorにtrueを指定(VivoTab Note 8でGPS情報とれるかテスト) -->
+		<script type="text/javascript"
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhWl9WUXyY1agtKjkQ3J0ayeCJwU8Spr4&sensor=true"></script>
+		<script type="text/javascript">
+		var map;	//Mapのインスタンス？
+		
+		//APIにアクセスする際に最初に実行する関数
+		function initialize()
+		{
+			var mapOptions = {
+				center: new google.maps.LatLng(35.68, 139.77),
+				zoom: 20
+			};
+			
+			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		}
+		
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		</script>
+	</head>
+	<body>
+		<div id="map-canvas" style="border:red solid 2px;" />
+	</body>
+</html>
